@@ -14,13 +14,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerPanUnit.DAE"/>
+          <mesh filename="${models_path}/meshes/lowerPanUnit.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerPanUnit.stl"/>
+          <mesh filename="${models_path}/meshes/lowerPanUnit.stl"/>
         </geometry>
       </collision>
     </link>
@@ -51,13 +51,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsLink.DAE"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsLink.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsLink.stl"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsLink.stl"/>
         </geometry>
       </collision>
     </link>
@@ -81,7 +81,7 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsFrontLink.DAE"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsFrontLink.DAE"/>
         </geometry>
         <material name="base">
           <color rgba="0 255 255 1.0"/>
@@ -97,7 +97,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsFrontLink.stl"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsFrontLink.stl"/>
         </geometry>
       </collision>
     </link>
@@ -119,7 +119,7 @@
         <material name="WAMGrey" />
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsTopLink.DAE"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsTopLink.DAE"/>
         </geometry>
         <material name="base">
           <color rgba="0 255 255 1.0"/>
@@ -135,7 +135,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/lowerTiltBeamsTopLink.stl"/>
+          <mesh filename="${models_path}/meshes/lowerTiltBeamsTopLink.stl"/>
         </geometry>
       </collision>
     </link>
@@ -175,13 +175,13 @@
         <material name="WAMGrey" />
         <origin xyz="0 0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/upperTiltUnitLink.DAE"/>
+          <mesh filename="${models_path}/meshes/upperTiltUnitLink.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/upperTiltUnitLink.stl"/>
+          <mesh filename="${models_path}/meshes/upperTiltUnitLink.stl"/>
         </geometry>
       </collision>
     </link>
@@ -210,13 +210,13 @@
         <material name="WAMGrey" />
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/Re2_Head.DAE"/>
+          <mesh filename="${models_path}/meshes/Re2_Head.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/skinMeshCollision.stl"/>
+          <mesh filename="${models_path}/meshes/skinMeshCollision.stl"/>
         </geometry>
       </collision>
     </link>

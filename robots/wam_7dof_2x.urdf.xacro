@@ -2,7 +2,7 @@
   xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Includea all the WAM stuff -->
-  <include filename="$(find bard_urdf)/models/wam_top.urdf.xacro"/>
+  <include filename="$(find barrett_model)/models/wam_top.urdf.xacro"/>
 
   <!-- Root link is in the world frame-->
 
@@ -27,21 +27,21 @@
     <visual>
       <origin rpy="0 0 0 " xyz="0 0 0"/>
       <geometry>
-        <mesh filename="${homeDirectory}/models/componentSTL/bench_lattice.dae"/>
+        <mesh filename="${models_path}/meshes/bench_lattice.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0 " xyz="0 0 0"/>
       <geometry>
-        <mesh filename="${homeDirectory}/models/componentSTL/bench_lattice.stl"/>
+        <mesh filename="${models_path}/meshes/bench_lattice.stl"/>
       </geometry>
     </collision>
   </link>
 
-  <!--<gazebo reference="baseLink">
+  <gazebo reference="baseLink">
     <static>true</static>
-     <turnGravityOff>true</turnGravityOff>
-   </gazebo>-->
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
 
   <xacro:wam_root prefix="wam_left" parentLink="baseLink" xyz="0.356 0.46 1" rpy="0 ${-0.5*PI} ${0.5*PI}"/>
   <xacro:wam_7dof prefix="wam_left" parentLink="wam_left/FixedLink" xyz="0 0 0" rpy="0 0 0" />

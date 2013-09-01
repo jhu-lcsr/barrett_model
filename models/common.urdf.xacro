@@ -32,8 +32,8 @@
   xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Directories -->
-  <xacro:property name="homeDirectory" value="package://bard_urdf" />
-  <xacro:property name="highResModelDirectory" value="${homeDirectory}/models/componentSTL/splitModels" />
+  <xacro:property name="models_path" value="package://barrett_model/models" />
+  <xacro:property name="highResModelDirectory" value="${models_path}/meshes/splitModels" />
 
   <!-- Constants -->
   <xacro:property name="PI" value="3.1415926535897931" />

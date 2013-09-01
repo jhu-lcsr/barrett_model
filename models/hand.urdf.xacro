@@ -29,7 +29,7 @@
   xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
   xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <include filename="$(find bard_urdf)/models/common.urdf.xacro"/>
+  <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
   <!-- Palm -->
   <xacro:macro name="Palm" params="prefix">
@@ -83,13 +83,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/palm.DAE"/>
+          <mesh filename="${models_path}/meshes/palm.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/palm.stl"/>
+          <mesh filename="${models_path}/meshes/palm.stl"/>
         </geometry>
       </collision>
     </link>
@@ -148,13 +148,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/palm.DAE"/>
+          <mesh filename="${models_path}/meshes/palm.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/palm.stl"/>
+          <mesh filename="${models_path}/meshes/palm.stl"/>
         </geometry>
       </collision>
     </link>

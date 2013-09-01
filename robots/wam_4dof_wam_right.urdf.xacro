@@ -2,7 +2,7 @@
   xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Includea all the WAM stuff -->
-  <include filename="$(find bard_urdf)/models/wam_top.urdf.xacro"/>
+  <include filename="$(find barrett_model)/models/wam_top.urdf.xacro"/>
 
   <!-- Root link is in the world frame-->
   <link name = "baseLink"/>

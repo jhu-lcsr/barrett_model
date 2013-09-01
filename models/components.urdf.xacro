@@ -31,15 +31,59 @@
   xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
   xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <include filename="$(find bard_urdf)/models/hand.urdf.xacro"/>
-  <include filename="$(find bard_urdf)/models/common.urdf.xacro"/>
+  <include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
+  <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
   <!-- Upper arm macros -->
-  <xacro:macro name="Shoulder" params="prefix parentLink xyz rpy">
-    <joint name="${prefix}/YawJoint" type="revolute">
+  <xacro:macro name="Base" params="prefix parentLink xyz rpy">
+    <joint name="${prefix}/FixedJoint" type="fixed">
       <parent link="${parentLink}"/>
-      <child link="${prefix}/ShoulderLink"/>
+      <child link="${prefix}/BaseLink"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
+
+    <!-- Create the $(arg robot_name) WAM -->
+    <link name = "${prefix}/BaseLink">
+      <inertial>
+        <origin xyz="0 0 0" />
+        <mass value="100" />
+        <inertia
+          ixx="1" ixy="0"   ixz="0"
+                  iyy="1"   iyz="0"
+                            izz="1" />
+      </inertial>
+      <visual>
+        <material name="WAMGrey">
+          <color rgba="0.9 0.9 0.9 0.0"/>
+        </material>
+        <!--  this orgin is not centered because the origin in our model is not at the same spot as the origin barret uses for inertia-->
+        <origin xyz="0 0.0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="${models_path}/sw_meshes/base_link.STL"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0.0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="${models_path}/sw_meshes/base_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Simulation stuff -->
+    <!--gazebo>
+      <controller:gazebo_ros_controller_manager name="gazebo_ros_controller_manager" plugin="libgazebo_ros_controller_manager.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>1000.0</updateRate>
+      </controller:gazebo_ros_controller_manager>
+    </gazebo-->
+  </xacro:macro>
+
+  <xacro:macro name="Shoulder" params="prefix">
+    <joint name="${prefix}/YawJoint" type="revolute">
+      <parent link="${prefix}/BaseLink"/>
+      <child link="${prefix}/ShoulderLink"/>
+      <origin xyz="0 0 0.346" rpy="0 0 0"/>
       <axis xyz="0 -1 0"/>
       <limit effort="30" lower="-2.6" upper="2.6" velocity="0.50"/>
       <!-- <safety_controller k_position="10000000" k_velocity="10000000" soft_lower_limit="-100.0" soft_upper_limit="100.0" /> -->
@@ -61,13 +105,13 @@
         <!--  this orgin is not centered because the origin in our model is not at the same spot as the origin barret uses for inertia-->
         <origin xyz="0 .189 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamShoulderLink1.DAE"/>
+          <mesh filename="${models_path}/meshes/wamShoulderLink1.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 .189 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamShoulderLink1.stl"/>
+          <mesh filename="${models_path}/meshes/wamShoulderLink1.stl"/>
         </geometry>
       </collision>
     </link>
@@ -93,7 +137,7 @@
         </material>
         <origin xyz="0 0 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperArmInShoulderLink.dae"/>
+          <mesh filename="${models_path}/meshes/wamUpperArmInShoulderLink.dae"/>
         </geometry>
       </visual>
       <inertial>
@@ -106,7 +150,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperArmInShoulderLink2.stl"/>
+          <mesh filename="${models_path}/meshes/wamUpperArmInShoulderLink2.stl"/>
         </geometry>
       </collision>
     </link>
@@ -138,13 +182,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperArmLink3.dae"/>
+          <mesh filename="${models_path}/meshes/wamUpperArmLink3.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperArmLink3.stl"/>
+          <mesh filename="${models_path}/meshes/wamUpperArmLink3.stl"/>
         </geometry>
       </collision>
     </link>
@@ -178,13 +222,13 @@
         </material>
         <origin xyz="0 0 0" rpy="-${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamForeArmLink4.DAE"/>
+          <mesh filename="${models_path}/meshes/wamForeArmLink4.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="-${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamForeArmLink4.stl"/>
+          <mesh filename="${models_path}/meshes/wamForeArmLink4.stl"/>
         </geometry>
       </collision>
     </link>
@@ -216,13 +260,13 @@
         </material>
         <origin xyz="0 0.02711 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristYawLink.DAE"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristYawLink.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0.02711 0" rpy="${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristYawLink5.stl"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristYawLink5.stl"/>
         </geometry>
       </collision>
     </link>
@@ -256,13 +300,13 @@
         </material>
         <origin xyz="0 0 0" rpy="-${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamForeArmLink4.DAE"/>
+          <mesh filename="${models_path}/meshes/wamForeArmLink4.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="-${PI} 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamForeArmLink4.stl"/>
+          <mesh filename="${models_path}/meshes/wamForeArmLink4.stl"/>
         </geometry>
       </collision>
     </link>
@@ -294,13 +338,13 @@
         </material>
         <origin xyz="0 0.02711 0" rpy="${PI} ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristYawLink.DAE"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristYawLink.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0.02711 0" rpy="${PI} ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristYawLink5.stl"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristYawLink5.stl"/>
         </geometry>
       </collision>
     </link>
@@ -332,13 +376,13 @@
         </material>
         <origin xyz="0 0 0" rpy="${0.5 * PI} 0 ${-0.5 * PI}" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristPitchLink6.dae"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristPitchLink6.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="${0.5 * PI} 0 ${-0.5 * PI}" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamUpperWristPitchLink6.stl"/>
+          <mesh filename="${models_path}/meshes/wamUpperWristPitchLink6.stl"/>
         </geometry>
       </collision>
     </link>
@@ -371,13 +415,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamLowerWristLink7.dae"/>
+          <mesh filename="${models_path}/meshes/wamLowerWristLink7.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/wamLowerWristLink7.stl"/>
+          <mesh filename="${models_path}/meshes/wamLowerWristLink7.stl"/>
         </geometry>
       </collision>
     </link>
@@ -410,13 +454,13 @@
         </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/forceTorqueSensor.DAE"/>
+          <mesh filename="${models_path}/meshes/forceTorqueSensor.DAE"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/forceTorqueSensor.stl"/>
+          <mesh filename="${models_path}/meshes/forceTorqueSensor.stl"/>
         </geometry>
       </collision>
     </link>
@@ -442,7 +486,7 @@
         </material>
         <origin xyz="0 0 0" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/firstFingerLink.DAE"/>
+          <mesh filename="${models_path}/meshes/firstFingerLink.DAE"/>
         </geometry>
       </visual>
       <inertial>
@@ -455,7 +499,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/firstFingerLink.stl"/>
+          <mesh filename="${models_path}/meshes/firstFingerLink.stl"/>
         </geometry>
         <mu1 value="50000.0" />
         <mu2 value="50000.0" />
@@ -484,7 +528,7 @@
         </material>
         <origin xyz="0 0 0" rpy="${PI} ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/secondFingerLink.DAE"/>
+          <mesh filename="${models_path}/meshes/secondFingerLink.DAE"/>
         </geometry>
       </visual>
       <inertial>
@@ -497,7 +541,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="${PI} ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/secondFingerLink.stl"/>
+          <mesh filename="${models_path}/meshes/secondFingerLink.stl"/>
         </geometry>
         <mu1 value="50000.0" />
         <mu2 value="50000.0" />
@@ -527,7 +571,7 @@
         </material>
         <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/thirdFingerLink.DAE"/>
+          <mesh filename="${models_path}/meshes/thirdFingerLink.DAE"/>
         </geometry>
       </visual>
       <inertial>
@@ -540,7 +584,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 ${0.5 * PI} 0" />
         <geometry>
-          <mesh filename="${homeDirectory}/models/componentSTL/thirdFingerLink.stl"/>
+          <mesh filename="${models_path}/meshes/thirdFingerLink.stl"/>
         </geometry>
         <mu1 value="50000.0" />
         <mu2 value="50000.0" />
