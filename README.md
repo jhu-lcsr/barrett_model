@@ -8,8 +8,8 @@ This repository contains Barrett WAM & BHand-280 CAD and modular URDFs with iner
 * macro: `wam_7dof`
     * macro: `wam`
         * `PREFIX/base_yaw_joint`
-        * `PREFIX/shoulder_yaw_joint`
         * `PREFIX/shoulder_pitch_joint`
+        * `PREFIX/shoulder_yaw_joint`
         * `PREFIX/elbow_pitch_joint`
     * macro: `wam_wrist`
         * `PREFIX/wrist_yaw_joint`
