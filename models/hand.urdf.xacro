@@ -14,13 +14,13 @@
   <!-- Fingers -->
   <xacro:macro name="bhand_finger_1" params="prefix">
     <xacro:bhand_finger_prox prefix="${prefix}/finger_1" parent_link="${prefix}/bhand_palm_link" xyz="0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_1" parent_link="${prefix}/finger_1/bhand_finger_prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_1" parent_link="${prefix}/finger_1/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
     <xacro:bhand_finger_dist prefix="${prefix}/finger_1"/>
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_2" params="prefix">
     <xacro:bhand_finger_prox prefix="${prefix}/finger_2" parent_link="${prefix}/bhand_palm_link" xyz="-0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 -1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_2" parent_link="${prefix}/finger_2/bhand_finger_prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_2" parent_link="${prefix}/finger_2/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
     <xacro:bhand_finger_dist prefix="${prefix}/finger_2"/>
   </xacro:macro>
 
@@ -63,14 +63,14 @@
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_prox" params="prefix parent_link xyz rpy axis">
-    <joint name="${prefix}/bhand_finger_prox_joint" type="revolute">
+    <joint name="${prefix}/prox_joint" type="revolute">
       <parent link="${parent_link}"/>
-      <child link="${prefix}/bhand_finger_prox_link"/>
+      <child link="${prefix}/prox_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="0.20"/>
     </joint>
-    <link name="${prefix}/bhand_finger_prox_link">
+    <link name="${prefix}/prox_link">
       <inertial>
         <origin xyz="0.023133 0.00078642 0.00052792" />
         <mass value="0.062139" />
@@ -96,14 +96,14 @@
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_med" params="prefix parent_link xyz rpy">
-    <joint name="${prefix}/bhand_finger_med_joint" type="revolute">
+    <joint name="${prefix}/med_joint" type="revolute">
       <parent link="${parent_link}"/>
-      <child link="${prefix}/bhand_finger_med_link"/>
+      <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${140/180*PI}" velocity="0.20"/>
     </joint>
-    <link name="${prefix}/bhand_finger_med_link">
+    <link name="${prefix}/med_link">
       <inertial>
         <origin xyz="0.023133 0.00078642 0.00052792" />
         <mass value="0.062139" />
@@ -129,14 +129,14 @@
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_dist" params="prefix">
-    <joint name="${prefix}/bhand_finger_dist_joint" type="revolute">
-      <parent link="${prefix}/bhand_finger_med_link"/>
-      <child link="${prefix}/bhand_finger_dist_link"/>
+    <joint name="${prefix}/dist_joint" type="revolute">
+      <parent link="${prefix}/med_link"/>
+      <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${48/180*PI}" velocity="0.20"/>
     </joint>
-    <link name="${prefix}/bhand_finger_dist_link">
+    <link name="${prefix}/dist_link">
       <inertial>
         <origin xyz="0.022825 0.0010491 0.0004203" />
         <mass value="0.041377" />
