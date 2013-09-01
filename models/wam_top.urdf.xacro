@@ -8,6 +8,8 @@
   <include filename="$(find barrett_model)/models/arm.urdf.xacro"/>
   <!-- Definition of all the different parts of a WAM arm -->
   <include filename="$(find barrett_model)/models/components.urdf.xacro"/>
+  <!-- Definitions for the barrett hand -->
+  <include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
 
   <!-- Materials -->
   <material name="WAMGrey">

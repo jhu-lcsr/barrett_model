@@ -25,53 +25,28 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
   <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
   <include filename="$(find barrett_model)/models/components.urdf.xacro"/>
 
-  <!-- different types of arms -->
-  <xacro:macro name="wam_4dof" params="prefix parentLink xyz rpy">
-    <xacro:wam_upper_arm prefix="${prefix}" parentLink="${parentLink}" xyz="${xyz}" rpy="${rpy}"/>
-    <xacro:hollow_forearm prefix="${prefix}"/>
-  </xacro:macro>
-
-  <xacro:macro name="wam_7dof" params="prefix parentLink xyz rpy">
-    <xacro:wam_upper_arm prefix="${prefix}" parentLink="${parentLink}" xyz="${xyz}" rpy="${rpy}"/>
-    <xacro:actuated_forearm prefix="${prefix}"/>
-  </xacro:macro>
-
-  <xacro:macro name="wam_7dof_ft" params="prefix parentLink xyz rpy">
-    <xacro:wam_upper_arm prefix="${prefix}" parentLink="${parentLink}" xyz="${xyz}" rpy="${rpy}"/>
-    <xacro:actuated_forearm_ft prefix="${prefix}"/>
+  <xacro:macro name="wam_7dof" params="prefix parent_link xyz rpy">
+    <xacro:wam prefix="${prefix}" parent_link="${parent_link}" xyz="${xyz}" rpy="${rpy}"/>
+    <xacro:wam_wrist prefix="${prefix}"/>
   </xacro:macro>
 
   <!-- upper arm only -->
-  <xacro:macro name="wam_upper_arm" params="prefix parentLink xyz rpy">
-    <xacro:Base prefix="${prefix}" parentLink="${parentLink}" xyz="${xyz}" rpy="${rpy}"/>
-    <xacro:Shoulder prefix="${prefix}"/>
-    <xacro:UpperArmInShoulder prefix="${prefix}"/>
-    <xacro:UpperArm prefix="${prefix}"/>
-  </xacro:macro>
-
-  <!-- forearm with no actuation "wrist" -->
-  <xacro:macro name="hollow_forearm" params="prefix">
-    <xacro:HollowForeArm prefix="${prefix}"/>
-    <xacro:HollowWrist prefix="${prefix}"/>
+  <xacro:macro name="wam" params="prefix parent_link xyz rpy">
+    <xacro:wam_base prefix="${prefix}" parent_link="${parent_link}" xyz="${xyz}" rpy="${rpy}"/>
+    <xacro:wam_shoulder_yaw prefix="${prefix}"/>
+    <xacro:wam_shoulder_pitch prefix="${prefix}"/>
+    <xacro:wam_upper_arm prefix="${prefix}"/>
   </xacro:macro>
 
   <!-- forearm with actuation "wrist" -->
-  <xacro:macro name="actuated_forearm" params="prefix">
-    <xacro:ForeArm prefix="${prefix}"/>
-    <xacro:UpperWristYaw prefix="${prefix}"/>
-    <xacro:UpperWristPitch prefix="${prefix}"/>
-    <xacro:LowerWrist prefix="${prefix}"/>
+  <xacro:macro name="wam_wrist" params="prefix">
+    <xacro:wam_forearm prefix="${prefix}"/>
+    <xacro:wam_wrist_yaw prefix="${prefix}"/>
+    <xacro:wam_wrist_pitch prefix="${prefix}"/>
+    <xacro:wam_palm prefix="${prefix}"/>
   </xacro:macro>
 
-  <!-- Define a macro to construct the arm with a Barrett BHand on the end of it -->
-  <xacro:macro name="actuated_forearm_ft" params="prefix">
-    <xacro:ForeArm prefix="${prefix}"/>
-    <xacro:UpperWristYaw prefix="${prefix}"/>
-    <xacro:UpperWristPitch prefix="${prefix}"/>
-    <xacro:LowerWristFT prefix="${prefix}"/>
-  </xacro:macro>
 </robot>

@@ -23,13 +23,7 @@
  * of or in connection with the use or performance of this software.
 -->
 
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-  xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
-  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-  xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
-  xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
-  xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Directories -->
   <xacro:property name="models_path" value="package://barrett_model/models" />
@@ -38,23 +32,8 @@
   <!-- Constants -->
   <xacro:property name="PI" value="3.1415926535897931" />
 
-
   <!-- Gazebo macros -->
-  <xacro:macro name="gazeboReference" params="name material">
-    <gazebo reference="${name}">
-      <material>
-        ${material}
-      </material>
-      <turnGravityOff>
-        false
-      </turnGravityOff>
-      <selfCollide>
-        true
-      </selfCollide>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="gazeboReferenceDAE" params="name">
+  <xacro:macro name="gazebo_reference" params="name">
     <gazebo reference="${name}">
       <turnGravityOff>
         false
@@ -65,16 +44,4 @@
     </gazebo>
   </xacro:macro>
 
-  <!-- Controller macros -->
-  <xacro:macro name="control" params="name topicName linkName jointName">
-    <!--
-    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${name}_trans">
-      <actuator name="${name}_motor" />
-      <joint name="${jointName}" />
-      <mechanicalReduction>1</mechanicalReduction>
-      <motorTorqueConstant>1</motorTorqueConstant>
-      <pulsesPerRevolution>90000</pulsesPerRevolution>
-    </transmission>
-    -->
-  </xacro:macro>
 </robot>
