@@ -6,15 +6,15 @@ This repository contains Barrett WAM & BHand-280 CAD and modular URDFs with iner
 ### Joint Naming Conventions
 
 * macro: `wam_7dof`
-  * macro: `wam`
-    * `PREFIX/base_yaw_joint`
-    * `PREFIX/shoulder_yaw_joint`
-    * `PREFIX/shoulder_pitch_joint`
-    * `PREFIX/elbow_pitch_joint`
-  * macro: `wam_wrist`
-    * `PREFIX/wrist_yaw_joint`
-    * `PREFIX/wrist_pitch_joint`
-    * `PREFIX/palm_yaw_joint`
+ * macro: `wam`
+  * `PREFIX/base_yaw_joint`
+  * `PREFIX/shoulder_yaw_joint`
+  * `PREFIX/shoulder_pitch_joint`
+  * `PREFIX/elbow_pitch_joint`
+ * macro: `wam_wrist`
+  * `PREFIX/wrist_yaw_joint`
+  * `PREFIX/wrist_pitch_joint`
+  * `PREFIX/palm_yaw_joint`
 
 * macro: `bhand`
   * `PREFIX/finger_1/prox_joint`
