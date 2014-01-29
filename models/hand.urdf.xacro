@@ -39,8 +39,8 @@
     </joint>
     <link name="${prefix}/bhand_palm_link">
       <inertial>
-        <origin xyz="5.1098e-005 -0.0050433 0.036671" />
-        <mass value="0.59573" />
+        <origin xyz="-5.1098e-005 0.0050433 0.036671"/>
+        <mass value="0.50573" />
         <inertia
           ixx="3.8374e-005" ixy="-5.604e-008"  ixz="-4.2034e-005"
                            iyy="0.00022405"   iyz="1.3283e-007"
@@ -73,7 +73,7 @@
     <link name="${prefix}/prox_link">
       <inertial>
         <origin xyz="0.023133 0.00078642 0.00052792" />
-        <mass value="0.062139" />
+        <mass value="0.14109" />
         <inertia
           ixx="4.872e-006" ixy="1.7103e-006"  ixz="3.4041e-008"
                            iyy="7.6588e-005"  iyz="2.3133e-008"
