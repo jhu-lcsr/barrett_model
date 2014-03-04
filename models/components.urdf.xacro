@@ -74,7 +74,7 @@
     <link name="${prefix}/shoulder_yaw_link" >
       <inertial>
         <origin xyz="-.00443422 -.00066489 -0.1289039 " />
-        <mass value="0" />
+        <mass value="5.0" />
         <inertia  
           ixx=".13488033"  ixy="-0.00012485"   ixz="0.00213041"
                            iyy=".09046330"    iyz="-.00068555"
