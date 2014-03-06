@@ -287,7 +287,7 @@
       <child link="${prefix}/wrist_pitch_link"/>
       <origin xyz="0 0 0" rpy="${-PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="-1.45" upper="1.45" velocity="0.20"/><!-- 1.45 is a limit taken in from 1.5 due to saftey and differences between arms. -->
+      <limit effort="5" lower="-1.5707" upper="1.5707" velocity="0.20"/><!-- 1.45 is a limit taken in from 1.5 due to saftey and differences between arms. -->
       <!-- <safety_controller k_position="100" k_velocity="3" soft_lower_limit="-100.0" soft_upper_limit="100.0" /> -->
       <!--<dynamics damping="1.0" friction="100.0"/>-->
     </joint>
