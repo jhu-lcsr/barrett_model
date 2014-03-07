@@ -44,5 +44,5 @@ To create a 7-DOF WAM with a Barrett Hand:
 The easiest way to view the robot models is with the `urdf_tutorial` package:
 
 ```
-roslaunch urdf_tutorial xacroview.launch model:=robots/wam7_bhand.urdf.xacro
+roslaunch urdf_tutorial xacrodisplay.launch model:=robots/wam7_bhand.urdf.xacro gui:=true
 ```
