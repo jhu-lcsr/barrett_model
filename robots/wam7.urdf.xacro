@@ -9,7 +9,4 @@
 
   <!-- 7-DOF Wam -->
   <xacro:wam_7dof prefix="wam" parent_link="world" xyz="0.0 0.0 1.0" rpy="0 0 0" />
-
-  <!-- BHand -->
-  <!--xacro:barrett_hand prefix="wam" /-->
 </robot>

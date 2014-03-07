@@ -40,3 +40,9 @@ To create a 7-DOF WAM with a Barrett Hand:
   parent_link="wam_left/wrist_palm_link" 
   xyz="0 0 0.06" rpy="0 0 0"/>
 ```
+
+The easiest way to view the robot models is with the `urdf_tutorial` package:
+
+```
+roslaunch urdf_tutorial xacroview.launch model:=robots/wam7_bhand.urdf.xacro
+```
