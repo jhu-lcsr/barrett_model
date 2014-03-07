@@ -25,8 +25,8 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
-  <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
+  <xacro:include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
+  <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
   <xacro:macro name="gz_joint">
     <!--<dynamics damping="0.5" friction="1"/>-->

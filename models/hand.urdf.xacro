@@ -1,7 +1,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
+  <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
   <!-- High-leveel hand macro -->
   <xacro:macro name="bhand" params="parent_link prefix xyz rpy">

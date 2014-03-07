@@ -25,8 +25,8 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <include filename="$(find barrett_model)/models/common.urdf.xacro"/>
-  <include filename="$(find barrett_model)/models/components.urdf.xacro"/>
+  <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
+  <xacro:include filename="$(find barrett_model)/models/components.urdf.xacro"/>
 
   <xacro:macro name="wam_7dof" params="prefix parent_link xyz rpy">
     <xacro:wam prefix="${prefix}" parent_link="${parent_link}" xyz="${xyz}" rpy="${rpy}"/>
