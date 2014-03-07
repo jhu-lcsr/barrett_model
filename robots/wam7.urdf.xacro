@@ -5,7 +5,11 @@
   <include filename="$(find barrett_model)/models/wam_top.urdf.xacro"/>
 
   <!-- Root link is in the world frame-->
-  <link name = "world"/>
+  <link name="world"/>
 
-  <xacro:wam_4dof prefix="wam" parent_link="world" xyz="0.02 0.46 1" rpy="0 0 0" />
+  <!-- 7-DOF Wam -->
+  <xacro:wam_7dof prefix="wam" parent_link="world" xyz="0.0 0.0 1.0" rpy="0 0 0" />
+
+  <!-- BHand -->
+  <!--xacro:barrett_hand prefix="wam" /-->
 </robot>
