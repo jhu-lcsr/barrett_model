@@ -28,8 +28,11 @@
   <xacro:include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
+  <!-- Gazebo joint configuration -->
   <xacro:macro name="gz_joint">
-    <!--<dynamics damping="0.5" friction="1"/>-->
+    <provideFeedback>true</provideFeedback>
+    <cfmDamping>true</cfmDamping>
+    <!--<dynamics damping="5.5" friction="1"/>-->
     <!--
        -<physics>
        -  <ode>
@@ -80,7 +83,7 @@
       <origin xyz="0 0 0.346" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="60" lower="-2.6" upper="2.6" velocity="0.50"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="5.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/base_yaw_joint">
       <xacro:gz_joint/>
@@ -118,7 +121,7 @@
       <origin xyz="0 0 0" rpy="${-PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="60" lower="-1.985" upper="1.985" velocity="0.5"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="5.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/shoulder_pitch_joint">
       <xacro:gz_joint/>
@@ -156,7 +159,7 @@
       <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="45" lower="-2.8" upper="2.8" velocity="0.5"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="5.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/shoulder_yaw_joint">
       <xacro:gz_joint/>
@@ -195,7 +198,7 @@
       <origin xyz="0.045 0 0.55" rpy="${-PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="20" lower="-0.9" upper="${PI}" velocity="0.20"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="5.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/elbow_pitch_joint">
       <xacro:gz_joint/>
@@ -473,7 +476,7 @@
       <origin xyz="0.045 0 0.55" rpy="${-PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="15" lower="-0.9" upper="${PI}" velocity="0.20"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="5.5" friction="1"/>
     </joint>
     <link name="${prefix}/stump_link" >
       <inertial>
