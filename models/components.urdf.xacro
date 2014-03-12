@@ -28,14 +28,6 @@
   <xacro:include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
-  <!-- Gazebo joint configuration -->
-  <xacro:macro name="gz_joint">
-    <provideFeedback>true</provideFeedback>
-    <implicitSpringDamper>true</implicitSpringDamper>
-    <!--<cfmDamping>true</cfmDamping>-->
-    <!--<dynamics damping="5.5" friction="1"/>-->
-  </xacro:macro>
-
   <!-- Upper arm macros -->
   <xacro:macro name="wam_base" params="prefix parent_link xyz rpy">
     <joint name="${prefix}/wam_fixed_joint" type="fixed">

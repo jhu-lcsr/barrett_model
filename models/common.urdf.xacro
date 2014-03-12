@@ -44,4 +44,12 @@
     </gazebo>
   </xacro:macro>
 
+  <!-- Gazebo joint configuration -->
+  <xacro:macro name="gz_joint">
+    <provideFeedback>true</provideFeedback>
+    <implicitSpringDamper>true</implicitSpringDamper>
+    <!--<cfmDamping>true</cfmDamping>-->
+    <!--<dynamics damping="5.5" friction="1"/>-->
+  </xacro:macro>
+
 </robot>
