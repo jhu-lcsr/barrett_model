@@ -69,7 +69,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="0.20"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
       <xacro:gz_joint/>
@@ -106,7 +106,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${140/180*PI}" velocity="0.20"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
       <xacro:gz_joint/>
@@ -143,7 +143,7 @@
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${48/180*PI}" velocity="0.20"/>
-      <dynamics damping="0.5" friction="1"/>
+      <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
       <xacro:gz_joint/>
