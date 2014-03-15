@@ -29,6 +29,11 @@
     <xacro:bhand_finger_dist prefix="${prefix}/finger_3"/>
   </xacro:macro>
 
+  <xacro:macro name="gz_hand_link">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <selfCollide>true</selfCollide>
+  </xacro:macro>
 
   <!-- Components -->
   <xacro:macro name="bhand_palm" params="prefix parent_link xyz rpy">
@@ -37,6 +42,9 @@
       <child link="${prefix}/bhand_palm_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
+    <gazebo reference="${prefix}/bhand_palm_link">
+      <xacro:gz_hand_link/>
+    </gazebo>
     <link name="${prefix}/bhand_palm_link">
       <inertial>
         <origin xyz="-5.1098e-005 0.0050433 0.036671"/>
@@ -68,11 +76,14 @@
       <child link="${prefix}/prox_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
-      <limit effort="5" lower="0" upper="${PI}" velocity="0.20"/>
+      <limit effort="5" lower="0" upper="${PI}" velocity="2.0"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
       <xacro:gz_joint/>
+    </gazebo>
+    <gazebo reference="${prefix}/prox_link">
+      <xacro:gz_hand_link/>
     </gazebo>
     <link name="${prefix}/prox_link">
       <inertial>
@@ -105,11 +116,14 @@
       <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="0.20"/>
+      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="2.00"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
       <xacro:gz_joint/>
+    </gazebo>
+    <gazebo reference="${prefix}/med_link">
+      <xacro:gz_hand_link/>
     </gazebo>
     <link name="${prefix}/med_link">
       <inertial>
@@ -142,11 +156,14 @@
       <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="0.20"/>
+      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="2.00"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
       <xacro:gz_joint/>
+    </gazebo>
+    <gazebo reference="${prefix}/dist_link">
+      <xacro:gz_hand_link/>
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>
