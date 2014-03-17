@@ -76,7 +76,7 @@
       <child link="${prefix}/prox_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
-      <limit effort="5" lower="0" upper="${PI}" velocity="2.0"/>
+      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
@@ -116,7 +116,7 @@
       <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="2.00"/>
+      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="5.00"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
@@ -156,7 +156,7 @@
       <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="2.00"/>
+      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="5.00"/>
       <dynamics damping="1.5" friction="1"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
