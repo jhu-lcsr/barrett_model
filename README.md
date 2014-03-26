@@ -5,10 +5,16 @@ This repository contains Barrett WAM & BHand-280 CAD and modular URDFs with iner
 
 The meshes and kinematics are based on publicly available resources from barrett.com. The dynamic properties are based on guidance from barrett.com as well as experiences with a real WAM and BH8-280.
 
-## Visual 
+## Visual
+
+These are based on meshes exported directly from SolidWorks.
+
 ![](doc/wam_visual.png)
 
-## Convex (sets) Collision Meshes
+## Collision Meshes
+
+The meshes used for collsion are sets of convex meshes processed manually in Blender to capture important surfaces and geometry.
+
 ![](doc/wam_collision.png)
 
 
