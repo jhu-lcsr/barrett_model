@@ -59,12 +59,12 @@
           <color rgba="0.9 0.9 0.9 0.0"/>
         </material>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_palm_fine.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_palm_fine.stl"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_palm.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_palm_link_convex_decomposition.dae"/>
         </geometry>
       </collision>
     </link>
@@ -99,12 +99,12 @@
           <color rgba="0.9 0.9 0.9 0.0"/>
         </material>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_prox_link_fine.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_prox_link_fine.stl"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_prox_link.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_prox_link_convex_decomposition.dae"/>
         </geometry>
       </collision>
     </link>
@@ -139,12 +139,12 @@
           <color rgba="0.9 0.9 0.9 0.0"/>
         </material>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link_fine.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link_fine.stl"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link_convex.stl"/>
         </geometry>
       </collision>
     </link>
@@ -179,12 +179,12 @@
           <color rgba="0.9 0.9 0.9 0.0"/>
         </material>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link_fine.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link_fine.stl"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link.STL"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link_convex.stl"/>
         </geometry>
       </collision>
     </link>
