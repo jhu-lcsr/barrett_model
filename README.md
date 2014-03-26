@@ -3,10 +3,12 @@ Barrett Model
 
 This repository contains Barrett WAM & BHand-280 CAD and modular URDFs with inertial properties.
 
-Visual 
+The meshes and kinematics are based on publicly available resources from barrett.com. The dynamic properties are based on guidance from barrett.com as well as experiences with a real WAM and BH8-280.
+
+## Visual 
 ![](doc/wam_visual.png)
 
-Convex (sets) Collision Meshes
+## Convex (sets) Collision Meshes
 ![](doc/wam_collision.png)
 
 
