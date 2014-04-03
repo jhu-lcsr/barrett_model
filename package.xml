@@ -18,6 +18,8 @@
   <url>http://ros.org/wiki/barrett_model</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>xacro</run_depend>
 </package>
 
 
