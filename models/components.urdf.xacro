@@ -152,8 +152,8 @@
 
     <link name="${prefix}/upper_arm_link" >
       <inertial>
-        <origin xyz="0.00683258580000000 0.000033090000000 0.342492300000000" />
-        <mass value="1.80228141" />
+        <origin xyz="0.00683258580000000 0.000033090000000 0.392492300000000" />
+        <mass value="2.20228141" />
         <inertia  
           ixx=".05911077"  ixy="-0.00000738"  ixz="-0.00249612"
                            iyy="0.05927043"   iyz="0.00001767"
@@ -190,8 +190,8 @@
     </gazebo>
     <link name="${prefix}/forearm_link" >
       <inertial>
-        <mass value="1.00016804" />
-        <origin xyz="-0.04001488 -.12271662 -.00022942 " rpy="0 0 0" />
+        <mass value="0.50016804" />
+        <origin xyz="-0.04001488 -.14271662 -.00022942 " rpy="0 0 0" />
         <inertia  
           ixx="0.01491672" ixy="0.001506040000000" ixz="0.000017410000000"
                            iyy="0.002944630000000" iyz="0.000021090000000"
@@ -244,7 +244,7 @@
     <link name="${prefix}/wrist_yaw_link" >
       <inertial>
         <origin xyz="0.00008921 0.00435824 -0.00511217 " />
-        <mass value="1.12376019" />
+        <mass value="1.05376019" />
         <inertia  ixx="0.00005029" ixy="0.00000020"  ixz="0.00007582"
           iyy="0.00007582"  iyz="-0.00000359"
           izz="0.00006270" />
@@ -319,7 +319,7 @@
     </gazebo>
     <link name="${prefix}/wrist_palm_link" >
       <inertial>
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 0.055" rpy="0 0 0" />
         <mass value="0.08286134" />
         <inertia  ixx="0.00010859" ixy="0.00000000"  ixz="-0.00000000"
           iyy="0.00020683"  iyz="-0.0000000"
