@@ -10,6 +10,8 @@
   <xacro:include filename="$(find barrett_model)/models/components.urdf.xacro"/>
   <!-- Definitions for the barrett hand -->
   <xacro:include filename="$(find barrett_model)/models/hand.urdf.xacro"/>
+  <!-- Definitions for the barrett ball -->
+  <xacro:include filename="$(find barrett_model)/models/ball.urdf.xacro"/>
 
   <!-- Materials -->
   <material name="WAMGrey">
