@@ -31,6 +31,7 @@
   <xacro:macro name="wam_7dof" params="prefix parent_link xyz rpy">
     <xacro:wam prefix="${prefix}" parent_link="${parent_link}" xyz="${xyz}" rpy="${rpy}"/>
     <xacro:wam_wrist prefix="${prefix}"/>
+    <xacro:wam_wrist_palm_stump prefix="${prefix}"/>
   </xacro:macro>
 
   <xacro:macro name="wam_4dof" params="prefix parent_link xyz rpy">

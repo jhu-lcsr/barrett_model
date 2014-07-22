@@ -68,6 +68,40 @@
         </geometry>
       </collision>
     </link>
+
+    <joint name="${prefix}/bhand_palm_surface_joint" type="fixed">
+      <parent link="${prefix}/bhand_palm_link"/>
+      <child link="${prefix}/bhand_palm_surface_link"/>
+      <origin xyz="0 0 0.08" rpy="0 0 0"/>
+      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
+      <dynamics damping="1.5" friction="1"/>
+    </joint>
+    <link name="${prefix}/bhand_palm_surface_link">
+      <inertial>
+        <mass value="0.000001" />
+        <inertia
+          ixx="0.000001" ixy="0.0"  ixz="0.0"
+          iyy="0.000001" iyz="0.0"
+          izz="0.000001" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}/bhand_grasp_joint" type="fixed">
+      <parent link="${prefix}/bhand_palm_link"/>
+      <child link="${prefix}/bhand_grasp_link"/>
+      <origin xyz="0 0 0.12" rpy="0 0 0"/>
+      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
+      <dynamics damping="1.5" friction="1"/>
+    </joint>
+    <link name="${prefix}/bhand_grasp_link">
+      <inertial>
+        <mass value="0.000001" />
+        <inertia
+          ixx="0.000001" ixy="0.0"  ixz="0.0"
+          iyy="0.000001" iyz="0.0"
+          izz="0.000001" />
+      </inertial>
+    </link>
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_prox" params="prefix parent_link xyz rpy axis">
