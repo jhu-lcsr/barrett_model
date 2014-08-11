@@ -66,6 +66,22 @@
         </geometry>
       </collision>
     </link>
+
+    <joint name="${prefix}/bball_center_joint" type="fixed">
+      <parent link="${prefix}/bball_base_link"/>
+      <child link="${prefix}/bball_center_link"/>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    </joint>
+    <link name="${prefix}/bball_center_link">
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="0.00001" />
+        <inertia
+          ixx="0.0001" ixy="0"  ixz="0"
+                       iyy="0.0001"   iyz="0"
+                                      izz="0.0001" />
+      </inertial>
+    </link>
   </xacro:macro>
 
 </robot>
