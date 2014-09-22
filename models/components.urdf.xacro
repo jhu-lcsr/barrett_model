@@ -311,7 +311,7 @@
       <child link="${prefix}/wrist_palm_link"/>
       <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit effort="10" lower="-2.95" upper="2.95" velocity="2.00"/><!-- 2.95 is a limit taken in from 3 due to saftey and differences between arms. -->
+      <limit effort="10" lower="-3.0" upper="3.0" velocity="2.00"/><!-- 2.95 is a limit taken in from 3 due to saftey and differences between arms. -->
       <dynamics damping="1.5" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/palm_yaw_joint">
