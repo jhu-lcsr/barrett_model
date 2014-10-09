@@ -29,10 +29,12 @@
     <xacro:bhand_finger_dist prefix="${prefix}/finger_3"/>
   </xacro:macro>
 
-  <xacro:macro name="gz_hand_link">
+  <xacro:macro name="gz_hand_link" params="collide">
     <mu1>0.8</mu1>
     <mu2>0.8</mu2>
-    <selfCollide>true</selfCollide>
+    <xacro:if value="${collide}">
+      <selfCollide>true</selfCollide>
+    </xacro:if>
   </xacro:macro>
 
   <!-- Components -->
@@ -43,7 +45,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
     <gazebo reference="${prefix}/bhand_palm_link">
-      <xacro:gz_hand_link/>
+      <xacro:gz_hand_link collide="false"/>
     </gazebo>
     <link name="${prefix}/bhand_palm_link">
       <inertial>
@@ -74,7 +76,7 @@
       <child link="${prefix}/bhand_palm_surface_link"/>
       <origin xyz="0 0 0.08" rpy="0 0 0"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="1.5" friction="1"/>
+      <dynamics damping="0.1" friction="0"/>
     </joint>
     <link name="${prefix}/bhand_palm_surface_link">
       <inertial>
@@ -91,7 +93,7 @@
       <child link="${prefix}/bhand_grasp_link"/>
       <origin xyz="0 0 0.12" rpy="0 0 0"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="1.5" friction="1"/>
+      <dynamics damping="0.1" friction="0"/>
     </joint>
     <link name="${prefix}/bhand_grasp_link">
       <inertial>
@@ -111,13 +113,13 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="1.5" friction="1"/>
+      <dynamics damping="0.1" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
       <xacro:gz_joint/>
     </gazebo>
     <gazebo reference="${prefix}/prox_link">
-      <xacro:gz_hand_link/>
+      <xacro:gz_hand_link collide="false"/>
     </gazebo>
     <link name="${prefix}/prox_link">
       <inertial>
@@ -151,13 +153,13 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${140/180*PI}" velocity="5.00"/>
-      <dynamics damping="1.5" friction="1"/>
+      <dynamics damping="0.1" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
       <xacro:gz_joint/>
     </gazebo>
     <gazebo reference="${prefix}/med_link">
-      <xacro:gz_hand_link/>
+      <xacro:gz_hand_link collide="false"/>
     </gazebo>
     <link name="${prefix}/med_link">
       <inertial>
@@ -191,13 +193,13 @@
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="5" lower="0" upper="${48/180*PI}" velocity="5.00"/>
-      <dynamics damping="1.5" friction="1"/>
+      <dynamics damping="0.1" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
       <xacro:gz_joint/>
     </gazebo>
     <gazebo reference="${prefix}/dist_link">
-      <xacro:gz_hand_link/>
+      <xacro:gz_hand_link collide="true"/>
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>
