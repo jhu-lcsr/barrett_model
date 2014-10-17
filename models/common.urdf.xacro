@@ -48,6 +48,8 @@
   <xacro:macro name="gz_joint">
     <provideFeedback>true</provideFeedback>
     <implicitSpringDamper>true</implicitSpringDamper>
+    <!--<kp>0.0</kp>[> CFM <]-->
+    <!--<kd>0.0</kd>[> ERP <]-->
     <!--<cfmDamping>true</cfmDamping>-->
     <!--<dynamics damping="5.5" friction="1"/>-->
   </xacro:macro>
