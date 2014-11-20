@@ -207,7 +207,7 @@
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>
-        <origin xyz="0.022825 0.0010491 0.0004203" rpy="0 0 ${-PI/4}"/>
+        <origin xyz="0.022825 0.0010491 0.0004203" rpy="0 0 0"/>
         <mass value="0.041377" />
         <inertia
           ixx="3.1582e-006" ixy="1.4308e-006"  ixz="1.0106e-007"
