@@ -54,7 +54,7 @@
     <link name="${prefix}/bhand_palm_link">
       <inertial>
         <origin xyz="-5.1098e-005 0.0050433 0.036671"/>
-        <mass value="0.50573" />
+        <mass value="0.40573" />
         <inertia
           ixx="3.8374e-005" ixy="-5.604e-008"  ixz="-4.2034e-005"
                            iyy="0.00022405"   iyz="1.3283e-007"
