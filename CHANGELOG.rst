@@ -2,8 +2,8 @@
 Changelog for package barrett_model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.0 (2014-12-08)
+------------------
 * adding tf frame for fingertips, fixing naming of the first two fingers
 * updating damping to have a global scale factor
 * Merge branch 'master' of github.com:jhu-lcsr/barrett_model
