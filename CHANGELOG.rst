@@ -2,8 +2,8 @@
 Changelog for package barrett_model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2014-12-10)
+------------------
 * fixing collada up-axes
 * Merge branch 'master' into devel
 * fixing orientation of bhand inertia
