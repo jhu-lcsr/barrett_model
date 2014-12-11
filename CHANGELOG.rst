@@ -2,6 +2,13 @@
 Changelog for package barrett_model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fixing collada up-axes
+* Merge branch 'master' into devel
+* fixing orientation of bhand inertia
+* Contributors: Jonathan Bohren
+
 0.5.0 (2014-12-08)
 ------------------
 * adding tf frame for fingertips, fixing naming of the first two fingers
