@@ -184,7 +184,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link_convex.stl"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_med_link_convex.dae"/>
         </geometry>
       </collision>
     </link>
@@ -226,7 +226,7 @@
       <collision>
         <origin rpy="0 0 ${-PI/4}"/>
         <geometry>
-          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link_convex.stl"/>
+          <mesh filename="${models_path}/sw_meshes/bhand/bhand_finger_dist_link_convex.dae"/>
         </geometry>
       </collision>
     </link>
