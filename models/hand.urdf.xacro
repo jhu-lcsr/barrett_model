@@ -34,8 +34,8 @@
   </xacro:macro>
 
   <xacro:macro name="gz_hand_link" params="collide">
-    <mu1>0.8</mu1>
-    <mu2>0.8</mu2>
+    <mu1>1.8</mu1>
+    <mu2>1.8</mu2>
     <xacro:if value="${collide}">
       <selfCollide>true</selfCollide>
     </xacro:if>
