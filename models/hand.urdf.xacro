@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
-  <xacro:property name="b" value="6.0"/>
+  <xacro:property name="b" value="0.1"/>
 
   <!-- High-leveel hand macro -->
   <xacro:macro name="bhand" params="parent_link prefix xyz rpy">
@@ -34,8 +34,8 @@
   </xacro:macro>
 
   <xacro:macro name="gz_hand_link" params="collide">
-    <mu1>1.8</mu1>
-    <mu2>1.8</mu2>
+    <mu1>2.8</mu1>
+    <mu2>2.8</mu2>
     <xacro:if value="${collide}">
       <selfCollide>true</selfCollide>
     </xacro:if>
@@ -80,7 +80,6 @@
       <child link="${prefix}/bhand_palm_surface_link"/>
       <origin xyz="0 0 0.08" rpy="0 0 0"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="${0.1*b}" friction="0"/>
     </joint>
     <link name="${prefix}/bhand_palm_surface_link">
       <inertial>
@@ -97,7 +96,6 @@
       <child link="${prefix}/bhand_grasp_link"/>
       <origin xyz="0 0 0.12" rpy="0 0 0"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="${0.1*b}" friction="0"/>
     </joint>
     <link name="${prefix}/bhand_grasp_link">
       <inertial>
@@ -120,7 +118,7 @@
       <dynamics damping="${0.1*b}" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
-      <xacro:gz_joint/>
+      <provideFeedback>true</provideFeedback>
     </gazebo>
     <gazebo reference="${prefix}/prox_link">
       <xacro:gz_hand_link collide="false"/>
@@ -160,10 +158,11 @@
       <dynamics damping="${0.1*b}" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
-      <xacro:gz_joint/>
+      <provideFeedback>true</provideFeedback>
     </gazebo>
     <gazebo reference="${prefix}/med_link">
       <xacro:gz_hand_link collide="false"/>
+      <xacro:gz_soft_link/>
     </gazebo>
     <link name="${prefix}/med_link">
       <inertial>
@@ -200,10 +199,11 @@
       <dynamics damping="${0.1*b}" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
-      <xacro:gz_joint/>
+      <provideFeedback>true</provideFeedback>
     </gazebo>
     <gazebo reference="${prefix}/dist_link">
       <xacro:gz_hand_link collide="true"/>
+      <xacro:gz_soft_link/>
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>

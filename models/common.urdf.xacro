@@ -54,4 +54,10 @@
     <!--<dynamics damping="5.5" friction="1"/>-->
   </xacro:macro>
 
+  <!-- Gazebo "soft" link which has compliant surface stiffness -->
+  <xacro:macro name="gz_soft_link">
+    <kp>10000</kp>
+    <kd>0.01</kd>
+  </xacro:macro>
+
 </robot>
