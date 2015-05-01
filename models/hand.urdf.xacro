@@ -2,8 +2,33 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
-  <xacro:property name="b" value="0.3"/>
   <xacro:property name="primitive" value="true"/>
+
+  <!-- link properties -->
+  <xacro:macro name="gz_hand_link" params="soft collide">
+    <mu1>2.8</mu1>
+    <mu2>2.8</mu2>
+    <maxContacts>2</maxContacts>
+    <xacro:if value="${collide}">
+      <selfCollide>false</selfCollide>
+    </xacro:if>
+    <xacro:if value="${soft}">
+      <xacro:gz_soft_link/>
+    </xacro:if>
+  </xacro:macro>
+
+  <!-- joint properties -->
+  <xacro:property name="b" value="0.5"/>
+  <xacro:property name="f" value="0"/>
+  <xacro:macro name="gz_hand_joint" params="feedback">
+    <provideFeedback>${feedback}</provideFeedback>
+    <!--<cfmDamping>true</cfmDamping>-->
+    <!--<kp>0.001</kp>-->
+    <!--<kd>0.01</kd>-->
+    <!--<stopCfm>0.5</stopCfm>-->
+    <!--<stopErp>0.5</stopErp>-->
+  </xacro:macro>
+
 
   <!-- High-level hand macro -->
   <xacro:macro name="bhand" params="parent_link prefix xyz rpy">
@@ -12,6 +37,7 @@
     <xacro:bhand_finger_2 prefix="${prefix}"/>
     <xacro:bhand_finger_3 prefix="${prefix}"/>
 
+    <!-- don't use the gazebo gripper plugin, just slows down the sim -->
     <xacro:if value="false">
       <gazebo>
         <gripper name="bhand">
@@ -56,17 +82,6 @@
     <xacro:bhand_finger_tip prefix="${prefix}/finger_3"/>
   </xacro:macro>
 
-  <xacro:macro name="gz_hand_link" params="collide">
-    <kp>1</kp>
-    <kd>0.01</kd>
-    <mu1>2.8</mu1>
-    <mu2>2.8</mu2>
-    <maxContacts>2</maxContacts>
-    <xacro:if value="${collide}">
-      <selfCollide>false</selfCollide>
-    </xacro:if>
-  </xacro:macro>
-
   <!-- Components -->
   <xacro:macro name="bhand_palm" params="prefix parent_link xyz rpy">
     <joint name="${prefix}/bhand_base_joint" type="fixed">
@@ -75,7 +90,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
     <gazebo reference="${prefix}/bhand_palm_link">
-      <xacro:gz_hand_link collide="false"/>
+      <xacro:gz_hand_link collide="false" soft="false"/>
     </gazebo>
     <link name="${prefix}/bhand_palm_link">
       <inertial>
@@ -152,14 +167,15 @@
       <child link="${prefix}/prox_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
-      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
-      <dynamics damping="${0.1*b}" friction="0"/>
+      <limit effort="5" lower="0" upper="${PI}" velocity="10.0"/>
+      <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
-      <provideFeedback>true</provideFeedback>
+      <xacro:gz_hand_joint feedback="true"/>
+      <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/prox_link">
-      <xacro:gz_hand_link collide="false"/>
+      <xacro:gz_hand_link collide="false" soft="false"/>
     </gazebo>
     <link name="${prefix}/prox_link">
       <inertial>
@@ -200,15 +216,15 @@
       <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="5.00"/>
-      <dynamics damping="${0.1*b}" friction="0"/>
+      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="10.00"/>
+      <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
-      <provideFeedback>true</provideFeedback>
+      <xacro:gz_hand_joint feedback="true"/>
+      <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/med_link">
-      <xacro:gz_hand_link collide="false"/>
-      <xacro:gz_soft_link/>
+      <xacro:gz_hand_link collide="false" soft="true"/>
     </gazebo>
     <link name="${prefix}/med_link">
       <inertial>
@@ -249,17 +265,15 @@
       <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 ${PI/4}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="5.00"/>
-      <dynamics damping="${0.1*b}" friction="0"/>
+      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="10.00"/>
+      <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
-      <provideFeedback>true</provideFeedback>
-      <!--<kp>10</kp>-->
-      <!--<kd>0.01</kd>-->
+      <xacro:gz_hand_joint feedback="true"/>
+      <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/dist_link">
-      <xacro:gz_hand_link collide="true"/>
-      <xacro:gz_soft_link/>
+      <xacro:gz_hand_link collide="true" soft="true"/>
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>
