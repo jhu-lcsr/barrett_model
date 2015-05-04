@@ -313,7 +313,7 @@
       <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit effort="10" lower="-3.0" upper="3.0" velocity="2.00"/><!-- 2.95 is a limit taken in from 3 due to saftey and differences between arms. -->
-      <dynamics damping="${0.1*b}" friction="0"/>
+      <dynamics damping="${0.3*b}" friction="0"/>
     </joint>
     <gazebo reference="${prefix}/palm_yaw_joint">
       <xacro:gz_joint/>
