@@ -216,7 +216,7 @@
       <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${140/180*PI}" velocity="10.00"/>
+      <limit effort="3" lower="0" upper="${140/180*PI}" velocity="10.00"/>
       <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
@@ -265,7 +265,7 @@
       <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 ${PI/4}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="5" lower="0" upper="${48/180*PI}" velocity="10.00"/>
+      <limit effort="3" lower="0" upper="${48/180*PI}" velocity="10.00"/>
       <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
