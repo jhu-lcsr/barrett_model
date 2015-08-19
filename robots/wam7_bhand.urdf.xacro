@@ -11,5 +11,5 @@
   <xacro:wam_7dof prefix="wam" parent_link="world" xyz="0.0 0.0 1.0" rpy="0 0 0" />
 
   <!-- BHand -->
-  <xacro:bhand prefix="wam/bhand" parent_link="wam/wrist_palm_link" xyz="0 0 0.06" rpy="0 0 0"/>
+  <xacro:bhand prefix="wam/bhand" parent_link="wam/wrist_palm_link" xyz="0 0 0.06" rpy="0 0 0" primitive="true"/>
 </robot>

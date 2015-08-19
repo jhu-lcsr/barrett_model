@@ -2,13 +2,12 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
-  <xacro:property name="primitive" value="true"/>
 
   <!-- link properties -->
   <xacro:macro name="gz_hand_link" params="soft collide">
     <mu1>2.8</mu1>
     <mu2>2.8</mu2>
-    <maxContacts>2</maxContacts>
+    <maxContacts>1</maxContacts>
     <xacro:if value="${collide}">
       <selfCollide>false</selfCollide>
     </xacro:if>
@@ -31,11 +30,11 @@
 
 
   <!-- High-level hand macro -->
-  <xacro:macro name="bhand" params="parent_link prefix xyz rpy">
-    <xacro:bhand_palm parent_link="${parent_link}" prefix="${prefix}" xyz="${xyz}" rpy="${rpy}"/>
-    <xacro:bhand_finger_1 prefix="${prefix}"/>
-    <xacro:bhand_finger_2 prefix="${prefix}"/>
-    <xacro:bhand_finger_3 prefix="${prefix}"/>
+  <xacro:macro name="bhand" params="parent_link prefix xyz rpy primitive">
+    <xacro:bhand_palm parent_link="${parent_link}" prefix="${prefix}" xyz="${xyz}" rpy="${rpy}" primitive="${primitive}/>
+    <xacro:bhand_finger_1 prefix="${prefix}" primitive="${primitive}/>
+    <xacro:bhand_finger_2 prefix="${prefix}" primitive="${primitive}/>
+    <xacro:bhand_finger_3 prefix="${prefix}" primitive="${primitive}/>
 
     <!-- don't use the gazebo gripper plugin, just slows down the sim -->
     <xacro:if value="false">
@@ -62,28 +61,28 @@
   </xacro:macro>
 
   <!-- Fingers -->
-  <xacro:macro name="bhand_finger_1" params="prefix">
-    <xacro:bhand_finger_prox prefix="${prefix}/finger_1" parent_link="${prefix}/bhand_palm_link" xyz="-0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 -1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_1" parent_link="${prefix}/finger_1/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_1"/>
+  <xacro:macro name="bhand_finger_1" params="prefix primitive">
+    <xacro:bhand_finger_prox prefix="${prefix}/finger_1" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="-0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 -1"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_1" primitive="${primitive} parent_link="${prefix}/finger_1/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_1" primitive="${primitive}/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_1"/>
   </xacro:macro>
 
-  <xacro:macro name="bhand_finger_2" params="prefix">
-    <xacro:bhand_finger_prox prefix="${prefix}/finger_2" parent_link="${prefix}/bhand_palm_link" xyz="0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_2" parent_link="${prefix}/finger_2/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_2"/>
+  <xacro:macro name="bhand_finger_2" params="prefix primitive">
+    <xacro:bhand_finger_prox prefix="${prefix}/finger_2" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 1"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_2" primitive="${primitive} parent_link="${prefix}/finger_2/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_2" primitive="${primitive}/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_2"/>
   </xacro:macro>
 
-  <xacro:macro name="bhand_finger_3" params="prefix">
-    <xacro:bhand_finger_med prefix="${prefix}/finger_3" parent_link="${prefix}/bhand_palm_link" xyz="0 0.05 0.0754" rpy="${PI/2} 0 ${PI/2}"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_3"/>
+  <xacro:macro name="bhand_finger_3" params="prefix primitive">
+    <xacro:bhand_finger_med prefix="${prefix}/finger_3" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="0 0.05 0.0754" rpy="${PI/2} 0 ${PI/2}"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_3" primitive="${primitive}/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_3"/>
   </xacro:macro>
 
   <!-- Components -->
-  <xacro:macro name="bhand_palm" params="prefix parent_link xyz rpy">
+  <xacro:macro name="bhand_palm" params="prefix parent_link xyz rpy primitive">
     <joint name="${prefix}/bhand_base_joint" type="fixed">
       <parent link="${parent_link}"/>
       <child link="${prefix}/bhand_palm_link"/>
@@ -132,7 +131,7 @@
       <parent link="${prefix}/bhand_palm_link"/>
       <child link="${prefix}/bhand_palm_surface_link"/>
       <origin xyz="0 0 0.08" rpy="0 0 0"/>
-      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
+      <limit effort="30" lower="0" upper="${PI}" velocity="5.0"/>
     </joint>
     <link name="${prefix}/bhand_palm_surface_link">
       <inertial>
@@ -148,7 +147,7 @@
       <parent link="${prefix}/bhand_palm_link"/>
       <child link="${prefix}/bhand_grasp_link"/>
       <origin xyz="0 0 0.12" rpy="0 0 0"/>
-      <limit effort="5" lower="0" upper="${PI}" velocity="5.0"/>
+      <limit effort="30" lower="0" upper="${PI}" velocity="5.0"/>
     </joint>
     <link name="${prefix}/bhand_grasp_link">
       <inertial>
@@ -161,7 +160,7 @@
     </link>
   </xacro:macro>
 
-  <xacro:macro name="bhand_finger_prox" params="prefix parent_link xyz rpy axis">
+  <xacro:macro name="bhand_finger_prox" params="prefix parent_link xyz rpy axis primitive">
     <joint name="${prefix}/prox_joint" type="revolute">
       <parent link="${parent_link}"/>
       <child link="${prefix}/prox_link"/>
@@ -210,13 +209,13 @@
     </link>
   </xacro:macro>
 
-  <xacro:macro name="bhand_finger_med" params="prefix parent_link xyz rpy">
+  <xacro:macro name="bhand_finger_med" params="prefix parent_link xyz rpy primitive">
     <joint name="${prefix}/med_joint" type="revolute">
       <parent link="${parent_link}"/>
       <child link="${prefix}/med_link"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="3" lower="0" upper="${140/180*PI}" velocity="10.00"/>
+      <limit effort="30" lower="0" upper="${140/180*PI}" velocity="10.00"/>
       <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
@@ -259,13 +258,13 @@
     </link>
   </xacro:macro>
 
-  <xacro:macro name="bhand_finger_dist" params="prefix">
+  <xacro:macro name="bhand_finger_dist" params="prefix primitive">
     <joint name="${prefix}/dist_joint" type="revolute">
       <parent link="${prefix}/med_link"/>
       <child link="${prefix}/dist_link"/>
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 ${PI/4}"/>
       <axis xyz="0 0 1"/>
-      <limit effort="10" lower="0" upper="${48/180*PI}" velocity="10.00"/>
+      <limit effort="30" lower="0" upper="${48/180*PI}" velocity="10.00"/>
       <dynamics damping="0.15" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
