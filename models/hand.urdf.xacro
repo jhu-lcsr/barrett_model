@@ -31,10 +31,10 @@
 
   <!-- High-level hand macro -->
   <xacro:macro name="bhand" params="parent_link prefix xyz rpy primitive">
-    <xacro:bhand_palm parent_link="${parent_link}" prefix="${prefix}" xyz="${xyz}" rpy="${rpy}" primitive="${primitive}/>
-    <xacro:bhand_finger_1 prefix="${prefix}" primitive="${primitive}/>
-    <xacro:bhand_finger_2 prefix="${prefix}" primitive="${primitive}/>
-    <xacro:bhand_finger_3 prefix="${prefix}" primitive="${primitive}/>
+    <xacro:bhand_palm parent_link="${parent_link}" prefix="${prefix}" xyz="${xyz}" rpy="${rpy}" primitive="${primitive}"/>
+    <xacro:bhand_finger_1 prefix="${prefix}" primitive="${primitive}"/>
+    <xacro:bhand_finger_2 prefix="${prefix}" primitive="${primitive}"/>
+    <xacro:bhand_finger_3 prefix="${prefix}" primitive="${primitive}"/>
 
     <!-- don't use the gazebo gripper plugin, just slows down the sim -->
     <xacro:if value="false">
@@ -62,22 +62,22 @@
 
   <!-- Fingers -->
   <xacro:macro name="bhand_finger_1" params="prefix primitive">
-    <xacro:bhand_finger_prox prefix="${prefix}/finger_1" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="-0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 -1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_1" primitive="${primitive} parent_link="${prefix}/finger_1/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_1" primitive="${primitive}/>
+    <xacro:bhand_finger_prox prefix="${prefix}/finger_1" primitive="${primitive}" parent_link="${prefix}/bhand_palm_link" xyz="-0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 -1"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_1" primitive="${primitive}" parent_link="${prefix}/finger_1/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_1" primitive="${primitive}"/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_1"/>
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_2" params="prefix primitive">
-    <xacro:bhand_finger_prox prefix="${prefix}/finger_2" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 1"/>
-    <xacro:bhand_finger_med prefix="${prefix}/finger_2" primitive="${primitive} parent_link="${prefix}/finger_2/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_2" primitive="${primitive}/>
+    <xacro:bhand_finger_prox prefix="${prefix}/finger_2" primitive="${primitive}" parent_link="${prefix}/bhand_palm_link" xyz="0.025 0.0 0.0415" rpy="0 0 -${PI/2}" axis="0 0 1"/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_2" primitive="${primitive}" parent_link="${prefix}/finger_2/prox_link" xyz="0.05 0.0 0.03390" rpy="${PI/2} 0 0"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_2" primitive="${primitive}"/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_2"/>
   </xacro:macro>
 
   <xacro:macro name="bhand_finger_3" params="prefix primitive">
-    <xacro:bhand_finger_med prefix="${prefix}/finger_3" primitive="${primitive} parent_link="${prefix}/bhand_palm_link" xyz="0 0.05 0.0754" rpy="${PI/2} 0 ${PI/2}"/>
-    <xacro:bhand_finger_dist prefix="${prefix}/finger_3" primitive="${primitive}/>
+    <xacro:bhand_finger_med prefix="${prefix}/finger_3" primitive="${primitive}" parent_link="${prefix}/bhand_palm_link" xyz="0 0.05 0.0754" rpy="${PI/2} 0 ${PI/2}"/>
+    <xacro:bhand_finger_dist prefix="${prefix}/finger_3" primitive="${primitive}"/>
     <xacro:bhand_finger_tip prefix="${prefix}/finger_3"/>
   </xacro:macro>
 
