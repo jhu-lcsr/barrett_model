@@ -1,4 +1,4 @@
-<robot name="bhand"
+<robot name="wam"
   xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Includea all the WAM stuff -->
