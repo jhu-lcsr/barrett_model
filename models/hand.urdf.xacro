@@ -150,6 +150,12 @@
       <limit effort="30" lower="0" upper="${PI}" velocity="5.0"/>
     </joint>
     <link name="${prefix}/bhand_grasp_link">
+      <collision><!-- https://github.com/ros-planning/moveit_core/issues/158 -->
+        <origin xyz="0 0 -0.13" rpy="0 0 0"/>
+        <geometry>
+          <sphere size="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
       <inertial>
         <mass value="0.00001" />
         <inertia
