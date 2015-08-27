@@ -153,7 +153,7 @@
       <collision><!-- https://github.com/ros-planning/moveit_core/issues/158 -->
         <origin xyz="0 0 -0.13" rpy="0 0 0"/>
         <geometry>
-          <sphere size="0.001 0.001 0.001"/>
+          <sphere radius="0.001"/>
         </geometry>
       </collision>
       <inertial>
