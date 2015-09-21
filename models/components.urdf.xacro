@@ -37,6 +37,10 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
 
+    <gazebo reference="${prefix}/base_link">
+      <xacro:gz_shiny/>
+    </gazebo>
+
     <link name = "${prefix}/base_link">
       <inertial>
         <origin xyz="0 0 0" />
@@ -47,9 +51,9 @@
                             izz="0.1" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 0.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 0.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/base_link_fine.stl"/>
         </geometry>
@@ -75,6 +79,10 @@
       <xacro:gz_joint/>
     </gazebo>
 
+    <gazebo reference="${prefix}/shoulder_yaw_link">
+      <xacro:gz_shiny/>
+    </gazebo>
+
     <link name="${prefix}/shoulder_yaw_link" >
       <inertial>
         <origin xyz="-.00443422 -.00066489 -0.1289039 " />
@@ -85,9 +93,9 @@
                                               izz=".11328369" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/shoulder_link_fine.stl"/>
         </geometry>
@@ -112,12 +120,15 @@
     <gazebo reference="${prefix}/shoulder_pitch_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/shoulder_pitch_link">
+      <xacro:gz_shiny/>
+    </gazebo>
 
     <link name="${prefix}/shoulder_pitch_link" >
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/shoulder_pitch_link_fine.stl"/>
         </geometry>
@@ -150,6 +161,9 @@
     <gazebo reference="${prefix}/shoulder_yaw_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/upper_arm_link">
+      <xacro:gz_shiny/>
+    </gazebo>
 
     <link name="${prefix}/upper_arm_link" >
       <inertial>
@@ -161,9 +175,9 @@
                                               izz="0.0032455" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/upper_arm_link_fine.stl"/>
         </geometry>
@@ -189,6 +203,9 @@
     <gazebo reference="${prefix}/elbow_pitch_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/forearm_link">
+      <xacro:gz_shiny/>
+    </gazebo>
     <link name="${prefix}/forearm_link" >
       <inertial>
         <mass value="0.50016804" />
@@ -199,9 +216,9 @@
                                                    izz="0.014829880000000" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/elbow_link_fine.stl"/>
         </geometry>
@@ -213,9 +230,9 @@
       </collision>
 
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey2">-->
+          <!--<color rgba="0.1 0.1 0.1 1.0"/>-->
+        <!--</material>-->
         <origin xyz="-0.045 -0.0730 0" rpy="${PI/2} 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/forearm_link_fine.stl"/>
@@ -242,6 +259,9 @@
     <gazebo reference="${prefix}/wrist_yaw_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/wrist_yaw_link">
+      <xacro:gz_shiny/>
+    </gazebo>
     <link name="${prefix}/wrist_yaw_link" >
       <inertial>
         <origin xyz="0.00008921 0.00435824 -0.00511217 " />
@@ -251,9 +271,9 @@
           izz="0.00006270" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_yaw_link_fine.stl"/>
@@ -280,6 +300,9 @@
     <gazebo reference="${prefix}/wrist_pitch_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/wrist_pitch_link">
+      <xacro:gz_shiny/>
+    </gazebo>
     <link name="${prefix}/wrist_pitch_link" >
       <inertial>
         <origin xyz="-0.00012262 -0.02468336 -0.01703194 " rpy="0 0 0" />
@@ -290,9 +313,9 @@
           izz="0.00045358" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_pitch_link_fine.stl"/>
         </geometry>
@@ -318,6 +341,9 @@
     <gazebo reference="${prefix}/palm_yaw_joint">
       <xacro:gz_joint/>
     </gazebo>
+    <gazebo reference="${prefix}/wrist_palm_link">
+      <xacro:gz_shiny/>
+    </gazebo>
     <link name="${prefix}/wrist_palm_link" >
       <inertial>
         <origin xyz="0.0 0.0 0.055" rpy="0 0 0" />
@@ -327,9 +353,9 @@
           izz="0.00010851" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_palm_link_fine.stl"/>
@@ -491,9 +517,9 @@
                                                    izz="0.014829880000000" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.7 0.7 0.7 1.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/elbow_link_fine.stl"/>
         </geometry>
