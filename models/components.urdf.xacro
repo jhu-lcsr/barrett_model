@@ -51,9 +51,9 @@
                             izz="0.1" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 0.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 0.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/base_link_fine.stl"/>
         </geometry>
@@ -93,9 +93,9 @@
                                               izz=".11328369" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/shoulder_link_fine.stl"/>
         </geometry>
@@ -126,9 +126,9 @@
 
     <link name="${prefix}/shoulder_pitch_link" >
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/shoulder_pitch_link_fine.stl"/>
         </geometry>
@@ -175,9 +175,9 @@
                                               izz="0.0032455" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/upper_arm_link_fine.stl"/>
         </geometry>
@@ -216,9 +216,9 @@
                                                    izz="0.014829880000000" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/elbow_link_fine.stl"/>
         </geometry>
@@ -230,9 +230,9 @@
       </collision>
 
       <visual>
-        <!--<material name="WAMGrey2">-->
-          <!--<color rgba="0.1 0.1 0.1 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey2">
+          <color rgba="0.1 0.1 0.1 1.0"/>
+        </material>
         <origin xyz="-0.045 -0.0730 0" rpy="${PI/2} 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/forearm_link_fine.stl"/>
@@ -313,9 +313,9 @@
           izz="0.00045358" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_pitch_link_fine.stl"/>
         </geometry>
@@ -353,9 +353,9 @@
           izz="0.00010851" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_palm_link_fine.stl"/>
@@ -517,9 +517,9 @@
                                                    izz="0.014829880000000" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <geometry>
           <mesh filename="${models_path}/sw_meshes/elbow_link_fine.stl"/>
         </geometry>
