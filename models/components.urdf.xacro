@@ -271,9 +271,9 @@
           izz="0.00006270" />
       </inertial>
       <visual>
-        <!--<material name="WAMGrey">-->
-          <!--<color rgba="0.7 0.7 0.7 1.0"/>-->
-        <!--</material>-->
+        <material name="WAMGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="${models_path}/sw_meshes/wrist_yaw_link_fine.stl"/>
