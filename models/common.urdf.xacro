@@ -56,8 +56,8 @@
 
   <!-- Gazebo "soft" link which has compliant surface stiffness -->
   <xacro:macro name="gz_soft_link">
-    <kp>5000</kp>
-    <kd>0.02</kd>
+    <!--<kp>5000</kp>-->
+    <!--<kd>0.02</kd>-->
   </xacro:macro>
 
   <xacro:macro name="gz_shiny">

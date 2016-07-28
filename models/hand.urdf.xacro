@@ -5,8 +5,8 @@
 
   <!-- link properties -->
   <xacro:macro name="gz_hand_link" params="soft collide">
-    <mu1>0.95</mu1>
-    <mu2>0.95</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
     <maxContacts>1</maxContacts>
     <xacro:if value="${collide}">
       <selfCollide>false</selfCollide>
