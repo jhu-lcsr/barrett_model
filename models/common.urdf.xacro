@@ -62,13 +62,33 @@
 
   <xacro:macro name="gz_shiny">
     <visual name='visual_shiny'>
-      <material>
-        <ambient>0.7 0.7 0.7 1</ambient>
-        <diffuse>0.9 0.9 0.9 1</diffuse>
-        <specular>0.5 0.5 0.5 0.3</specular>
-        <emissive>0 0 0 0</emissive>
-      </material>
+      <xacro:if value="true">
+        <material>
+          <script>
+            <uri>file://$(find barrett_model)/materials/barrett.material</uri>
+            <name>Wam/Aluminum</name>
+          </script>
+        </material>
+      </xacro:if>
+      <xacro:if value="false">
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.9 0.9 0.9 1</diffuse>
+          <specular>0.5 0.5 0.5 0.3</specular>
+          <emissive>0 0 0 0</emissive>
+        </material>
+      </xacro:if>
     </visual>
   </xacro:macro>
 
+  <xacro:macro name="gz_shiny_blue">
+    <visual name='visual_shiny'>
+        <material>
+          <script>
+            <uri>file://$(find barrett_model)/materials/barrett.material</uri>
+            <name>BHand/BlueAluminum</name>
+          </script>
+        </material>
+    </visual>
+  </xacro:macro>
 </robot>

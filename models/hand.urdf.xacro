@@ -5,8 +5,8 @@
 
   <!-- link properties -->
   <xacro:macro name="gz_hand_link" params="soft collide">
-    <mu1>2.8</mu1>
-    <mu2>2.8</mu2>
+    <mu1>0.95</mu1>
+    <mu2>0.95</mu2>
     <maxContacts>1</maxContacts>
     <xacro:if value="${collide}">
       <selfCollide>false</selfCollide>
@@ -90,6 +90,7 @@
     </joint>
     <gazebo reference="${prefix}/bhand_palm_link">
       <xacro:gz_hand_link collide="false" soft="false"/>
+      <xacro:gz_shiny_blue/>
     </gazebo>
     <link name="${prefix}/bhand_palm_link">
       <inertial>
@@ -101,9 +102,9 @@
                                               izz="0.00020045" />
       </inertial>
       <visual>
-        <material name="WAMGrey">
-          <color rgba="0.9 0.9 0.9 0.0"/>
-        </material>
+        <!--<material name="WAMGrey">-->
+          <!--<color rgba="0.9 0.9 0.9 0.0"/>-->
+        <!--</material>-->
         <geometry>
           <mesh filename="${models_path}/sw_meshes/bhand/bhand_palm_fine.stl"/>
         </geometry>
@@ -181,6 +182,7 @@
     </gazebo>
     <gazebo reference="${prefix}/prox_link">
       <xacro:gz_hand_link collide="false" soft="false"/>
+      <xacro:gz_shiny_blue/>
     </gazebo>
     <link name="${prefix}/prox_link">
       <inertial>
@@ -230,6 +232,7 @@
     </gazebo>
     <gazebo reference="${prefix}/med_link">
       <xacro:gz_hand_link collide="false" soft="true"/>
+      <xacro:gz_shiny/>
     </gazebo>
     <link name="${prefix}/med_link">
       <inertial>
@@ -279,6 +282,7 @@
     </gazebo>
     <gazebo reference="${prefix}/dist_link">
       <xacro:gz_hand_link collide="true" soft="true"/>
+      <xacro:gz_shiny/>
     </gazebo>
     <link name="${prefix}/dist_link">
       <inertial>
