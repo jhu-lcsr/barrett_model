@@ -4,15 +4,17 @@
   <xacro:include filename="$(find barrett_model)/models/common.urdf.xacro"/>
 
   <!-- link properties -->
-  <xacro:macro name="gz_hand_link" params="soft collide">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <maxContacts>1</maxContacts>
+  <xacro:macro name="gz_hand_link" params="soft collide contacts">
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+    <maxContacts>${contacts}</maxContacts>
     <xacro:if value="${collide}">
       <selfCollide>false</selfCollide>
     </xacro:if>
     <xacro:if value="${soft}">
       <xacro:gz_soft_link/>
+      <!--<kp>3000</kp>-->
+      <kd>0.1</kd>
     </xacro:if>
   </xacro:macro>
 
@@ -22,6 +24,8 @@
   <xacro:macro name="gz_hand_joint" params="feedback">
     <provideFeedback>${feedback}</provideFeedback>
     <!--<cfmDamping>true</cfmDamping>-->
+    <!--<kp>100</kp>-->
+    <!--<kd>0.01</kd>-->
     <!--<kp>0.001</kp>-->
     <!--<kd>0.01</kd>-->
     <!--<stopCfm>0.5</stopCfm>-->
@@ -89,7 +93,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
     <gazebo reference="${prefix}/bhand_palm_link">
-      <xacro:gz_hand_link collide="false" soft="false"/>
+      <xacro:gz_hand_link collide="false" soft="false" contacts="3"/>
       <xacro:gz_shiny_blue/>
     </gazebo>
     <link name="${prefix}/bhand_palm_link">
@@ -174,14 +178,14 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
       <limit effort="5" lower="0" upper="${PI}" velocity="10.0"/>
-      <dynamics damping="0.15" friction="${f}"/>
+      <dynamics damping="0.35" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/prox_joint">
       <xacro:gz_hand_joint feedback="true"/>
       <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/prox_link">
-      <xacro:gz_hand_link collide="false" soft="false"/>
+      <xacro:gz_hand_link collide="false" soft="false" contacts="1"/>
       <xacro:gz_shiny_blue/>
     </gazebo>
     <link name="${prefix}/prox_link">
@@ -224,14 +228,14 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 1"/>
       <limit effort="30" lower="0" upper="${140/180*PI}" velocity="10.00"/>
-      <dynamics damping="0.15" friction="${f}"/>
+      <dynamics damping="0.35" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/med_joint">
       <xacro:gz_hand_joint feedback="true"/>
       <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/med_link">
-      <xacro:gz_hand_link collide="false" soft="true"/>
+      <xacro:gz_hand_link collide="false" soft="true" contacts="1"/>
       <xacro:gz_shiny/>
     </gazebo>
     <link name="${prefix}/med_link">
@@ -274,14 +278,14 @@
       <origin xyz="0.06994 0.003 0.0" rpy="0 0 ${PI/4}"/>
       <axis xyz="0 0 1"/>
       <limit effort="30" lower="0" upper="${48/180*PI}" velocity="10.00"/>
-      <dynamics damping="0.15" friction="${f}"/>
+      <dynamics damping="0.35" friction="${f}"/>
     </joint>
     <gazebo reference="${prefix}/dist_joint">
       <xacro:gz_hand_joint feedback="true"/>
       <cfmDamping>true</cfmDamping>
     </gazebo>
     <gazebo reference="${prefix}/dist_link">
-      <xacro:gz_hand_link collide="true" soft="true"/>
+      <xacro:gz_hand_link collide="true" soft="true" contacts="1"/>
       <xacro:gz_shiny/>
     </gazebo>
     <link name="${prefix}/dist_link">
